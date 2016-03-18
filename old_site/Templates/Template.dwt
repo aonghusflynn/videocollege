@@ -1,0 +1,104 @@
+<html>
+<head>
+<title>The Video College</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+.bodytext{
+	color: #666666;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+}
+a:link {
+	color: #6699CC;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+}
+a:visited {
+	color: #8FBEE8;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+}
+.sidenav {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	font-weight: bold;
+	color: #FFFFFF;
+	padding-left: 10px;
+
+}
+.bodytextBold {
+	color: #666666;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: bold;
+}
+.footer {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #666666;
+}
+-->
+</style>
+</head>
+<body bgcolor="#FFFFFF" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<!-- ImageReady Slices (video_college.psd - Slices: 04, 05, 07, 08, 09, sidenav_bottom, sidenav_top, video_college_logo, video_college_masthead) -->
+<div align="center">
+  <br>
+  <table id="Table_01" width="770" border="0" cellpadding="0" cellspacing="0">
+	  <tr>
+		  <td>
+			  <img src="images/video_college_logo.gif" width="167" height="132" alt=""></td>
+		  <td colspan="2">
+			  <img src="images/video_college_masthead.gif" width="603" height="132" alt=""></td>
+	  </tr>
+	  <tr>
+		  <td valign="top" background="images/sidenav_top.gif">
+			  <a href="#"><span class="sidenav">Link 1</span></a><br>
+			  <a href="#"><span class="sidenav">Link 2</span></a><br>
+			  <a href="#"><span class="sidenav">Link 3</span></a><br>
+			  <a href="#"><span class="sidenav">Link 4</span></a><br>
+		  </td>
+		  <td width="24" height="308">
+			  <img src="images/spacer.gif" width="24" height="308" alt=""></td>
+		  <td width="579" height="308" valign="top" class="style6">
+		    <!-- TemplateBeginEditable name="Body" --><!-- TemplateEndEditable --></td>
+	  </tr>
+	  <tr>
+		  <td background="images/sidenav_bottom.gif">
+			  <a href="#"><span class="sidenav">Link 1</span></a><br>
+			  <a href="#"><span class="sidenav">Link 2</span></a><br>
+			  
+		  </td>
+		  <td width="24" height="99">
+			  <img src="images/spacer.gif" width="24" height="99" alt=""></td>
+		  <td width="579" height="99">
+			  <img src="images/spacer.gif" width="579" height="99" alt=""></td>
+	  </tr>
+	  <tr>
+		  <td width="770">
+		  <br>
+	    </td>
+	  </tr>
+	  <tr>
+	    <td width="770" colspan="3" align="center">
+		  <table width="100%"  border="0" cellspacing="0" cellpadding="0" bgcolor="#CCCCCC" >
+			  <tr>
+				<td class="footer" align="left">&copy; The Video College, 1 Thorpe Close, London, W10 5XL</td>
+				<td class="footer" align="right">Phone: 020 89642641 / Fax: 020 9860 2686</td>
+			  </tr>
+		  </table>  
+		  <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+			  <tr>
+				<td class="footer" align="left"></td>
+				<td class="footer" align="right">Registered Charity No: 1033064</td>
+			  </tr>
+		  </table>  <br>
+          <a href="http://www.salesforce.com/foundation" target="_new"><img src="images/foundation_logo.gif" border="0"></a>
+	    </td>
+	  </tr>
+  </table>
+  <!-- End ImageReady Slices -->
+</div>
+</body>
+</html>

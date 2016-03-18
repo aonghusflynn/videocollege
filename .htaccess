@@ -1,0 +1,20 @@
+Options All -Indexes
+DirectoryIndex index.html index.htm index.php
+
+RewriteEngine on
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /.*index\.php\ HTTP/
+RewriteRule ^(.*)index\.php$ http://www.thevideocollege.co.uk/$1 [R=301,L] 
+RewriteCond %{HTTP_HOST} ^thevideocollege\.co.uk
+RewriteRule (.*) http://www.thevideocollege.co.uk/$1 [R=301,L]
+
+<IfModule mod_rewrite.c>
+	RewriteEngine On
+	RewriteBase /
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteCond %{REQUEST_FILENAME} !-d
+	RewriteRule . /index.php [L]
+</IfModule>
+
+
+
+	

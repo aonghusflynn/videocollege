@@ -1,0 +1,196 @@
+body{
+	margin:0;
+	background-color:#fff;
+	color: #666666;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	text-align:center;
+}
+
+
+h1{
+	font-size:14px;
+	margin-bottom:0px;
+	color: #000099;
+}
+
+h2{
+	font-size:13px;
+	margin-bottom:0px;
+}
+
+#centercontent a:link {
+	color: #6699CC;
+	text-decoration: none;
+}
+#centercontent a:visited {
+	color: #8FBEE8;
+}
+
+
+#sidenav{
+	background-color:#8fbee8;
+	float:left;
+	width:167px;
+	padding:0;
+	margin:0;
+}
+
+
+
+#centercontent{
+	float:left;
+	width:603px;
+	margin-left:24px;
+	margin-right:20px;
+	voice-family: "\"}\"";
+	voice-family:inherit;
+	width:559px;
+}
+
+
+.page_title {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 16px;
+	font-style: normal;
+	font-weight: bold;
+	font-variant: small-caps;
+	text-transform: capitalize;
+	color: #666666;
+}
+
+
+.quote {
+	font-family: "Courier New", Courier, mono;
+	font-size: 18px;
+	font-style: normal;
+	line-height: normal;
+	font-weight: bold;
+	font-variant: normal;
+	color: #000099;
+}
+.smallquote {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-style: italic;
+	font-weight: normal;
+	color: #666666;
+}
+
+#holder{
+	margin:0px auto;
+	text-align:left;
+	width:777px;
+}
+
+.clearit{
+	clear:both;
+
+}
+
+#footer{
+	background-color:#eee;
+	width:100%;
+	padding:2px;
+	font-size: 10px;
+	margin-top:40px;
+}
+
+
+
+
+
+/*side bar menu*/
+
+ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	width: 167px; /* Width of Menu Items */
+	}
+
+ul li {
+	position: relative;
+	}
+
+li ul {
+	position: absolute;
+	left: 167px; /* Set 1px less than menu width */
+	top:0px;
+	display:none;
+	width: 197px;
+	}
+
+/* Styles for Menu Items */
+ul li a {
+	font-size: 14px;
+	font-weight: bold;
+	color: #FFFFFF;
+	padding-left:10px;
+	text-decoration: none;
+	display: block;
+	background: #55b0e4; /* IE6 Bug */
+	padding: 5px;
+	}
+	
+ul li a.last {
+	/*background: #6699cc;*/
+	background: #518cc6;
+}
+
+
+
+/* Fix IE. Hide from IE Mac \*/
+* html  ul li { float: left; height: 1%; }
+* html  ul li a { height: 1%; }
+/* End */
+
+
+ul li a:hover {background-color:#518cc6;text-decoration:none}
+/*ul li a.last:hover {background-color: #7d9ec1;}*/ /* Hover Styles */
+ul li a.last:hover {background-color: #55b0e4;text-decoration:none} /* Hover Styles */
+
+ul li a.current {background-color:#ccc;} /* Current Section Style */
+
+ /* Sub Menu Styles */
+li ul li a { 
+	padding: 3px 5px; 
+	font-size:12px;
+	font-style:normal;
+}
+
+li:hover ul, li.over ul { display: block; } /* The magic */
+
+.navbottom{
+	margin-bottom:-2px;
+}
+/*end side nav */
+
+div#centercontent a {
+text-decoration:none;
+}
+div#centercontent a:hover {text-decoration:underline}
+
+.mt0{
+	margin-top:0;
+}
+
+div#centercontent ul{
+z-index:300;
+padding-left:15px;
+margin:5px;
+float:none;
+list-style-type:disc;
+width:500px;
+}
+
+div#centercontent ul li {
+list-style-type:disc;
+display:block;
+float:none;
+}Quote_Title {
+	font-size:12px;
+	margin-bottom:0px;
+	color: #666666;
+	font-weight: bold;
+}

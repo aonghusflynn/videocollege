@@ -1,0 +1,96 @@
+body > * {
+  border: 1px solid #999;
+}
+body > * > * {
+  border: 1px solid #bbb;
+}
+body > * > * > * {
+  border: 1px solid #eee;
+}
+
+body {
+   margin: 0;
+   padding: 0;
+   font-size: 75%;
+   color:#666;
+}
+
+h2 {
+  margin: 0 0 .5em 0;
+}
+
+#leftnav .block,
+#rightnav .block {
+  margin: 0 0 1em 0;
+}
+
+.node,
+.node .content,
+.node .info {
+  margin:0.5em 0;
+}
+
+.node .links,
+.node .content P {
+  margin:0;
+}
+
+/**** Layout ****/
+#container {
+ width: 96%;
+ margin: 10px auto;
+}
+
+#top {
+ margin: 1em 1em 0 1em;
+ padding: .5em;
+ height: 100px;
+}
+
+#top h1,
+#top #slogan {
+ margin: 0;
+ padding: 0;
+}
+
+#navigation {
+ margin: 1em 0 0 0;
+ left:0;
+ right:0;
+}
+#navigation ul,
+#navigation li {
+ display:inline;
+ margin: 0;
+ padding: 0;
+}
+
+#leftnav {
+ float: left;
+ width: 160px;
+ margin: 0 0 1em 1em;
+ padding: 1em;
+}
+
+#rightnav {
+ float: right;
+ width: 160px;
+ margin: 0 1em 1em 0;
+ padding: 1em;
+}
+
+#content {
+ margin:0 200px 1em 200px;
+ padding: 1em;
+}
+
+#footer {
+ clear: both;
+ margin: 1em;
+ padding: .5em;
+}
+
+/**** special ****/
+br.clear {
+  clear:both;
+}

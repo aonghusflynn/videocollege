@@ -1,0 +1,137 @@
+<?php
+// $Id: image_exact.module,v 1.3.2.2 2006/06/26 19:04:34 joshk Exp $
+
+/**
+ * Implementation of hook_help().
+ */
+
+function image_exact_help($section) {
+  switch ($section) {
+    case 'admin/modules#description':
+      return t("Implements exact-size image thumbnail and avatars via cropping, based on max h/w from the image content type settings.");
+  }
+}
+
+/*
+* Implementation of hook_settings
+*/
+
+function image_exact_settings() {
+  if (!image_get_toolkit()) {
+    drupal_set_message('You must enable an image toolkit for this module to work!', 'error');
+  }
+  else {
+    $image_settings = l('image settings page', 'admin/settings/image');
+    $user_settings = l('user settings page', 'admin/settings/user');
+    $form['image_exact_nodes'] = array(
+      '#type' => 'fieldset',
+      '#title' => t('Image Node Settings'),
+      '#collapsible' => true,
+      '#collapsed' => false,
+    );
+    $form['image_exact_nodes']['image_exact_thumbs'] = array(
+      '#type' => 'checkbox',
+      '#title' => t('Use exact sizes for image-nodes'),
+      '#default_value' => variable_get('image_exact_thumbs', 1),
+      '#description' => t('If checked, this will force images of the size(s) checked below (as defined on the %link) to be exactly the size specified. Otherwise, the settings below will be ignored.', array('%link' => $image_settings)),
+    );
+    foreach (_image_get_sizes() as $count => $size) {
+      $options[$count] = $size['label'];
+    }
+    $form['image_exact_nodes']['image_exact_size'] = array(
+      '#type' => 'checkboxes',
+      '#title' => t('Specific Image Size Settings'),
+      '#default_value' => variable_get('image_exact_size', array(0)),
+      '#options' => $options,
+      '#description' => t('Each image size checked will be cropped and resized to the specified size defined in the %link. Note that existing images will not be resized until viewing that specific image edit tab, and possibly refreshing the browser.', array('%link' => $image_settings)),
+    );
+
+    if (variable_get('image_exact_avatars', 0)) {
+      list($final_w, $final_h) = explode('x', variable_get('user_picture_dimensions', '85x85'));
+      $w = round($final_w / 2);
+      $h = round($final_h / 2);
+      $form['image_exact_warning'] = array(
+        '#title' => t('Exact Avatar Size'),
+        '#value' => t('NOTICE: your exact-size avatars will be sized at %w pixels wide and %h pixels tall. To change this enter DOUBLE your desired amount on the %link', array('%link' => $user_settings, '%w' => $w, '%h' => $h))
+      );
+    }
+    $form['image_exact_avatars'] = array(
+      '#type' => 'checkbox',
+      '#title' => t('Use exact sizes for avatars?'),
+      '#default_value' => variable_get('image_exact_avatars', 0),
+      '#description' => t('Because of how the avatar system works, you need to enter a value in the %link that is DOUBLE what you want the real avatar size to be. If you want 85x85 exact, check the above box, then change the setting on the %link to 170x170', array('%link' => $user_settings)),
+    );
+  }
+  return $form;
+}
+
+/*
+* Implementation of hook_nodeapi
+*
+* Looks for images and if the setting is set will resize thumbs
+*/
+
+function image_exact_nodeapi(&$node, $op, $teaser = NULL, $page = NULL) {
+  //Set thumbnail final dimensions here - use settings from image content type.
+  if ($node->type == 'image' && $op == 'validate' && variable_get('image_exact_thumbs', 1)) {
+    $sizes = _image_get_sizes();
+    foreach(variable_get('image_exact_size', array(0)) as $i) {
+//     for ($i = 0; $i < 5; $i++) {
+      $source = file_create_path($node->images['_original']);
+      $destination = file_create_path($node->images[$sizes[$i]['label']]);
+      $final_w = $sizes[$i]['width'];
+      $final_h = $sizes[$i]['height'];
+      if ($final_w && $final_h) {
+        image_exact_resize($source, $destination, $final_w, $final_h);
+      }
+    }
+  }
+}
+
+/*
+* Implementation of hook_user
+* Handles exact-sizes for avatars
+*/
+
+function image_exact_user($op, &$edit, &$user, $category = NULL) {
+  if ($op == 'validate' && variable_get('image_exact_avatars', 0)) {
+    list($final_w, $final_h) = explode('x', variable_get('user_picture_dimensions', '190x190'));
+    $w = round($final_w / 2);
+    $h = round($final_h / 2);
+   image_exact_resize($edit['picture'], $edit['picture'], $w, $h);
+  }
+}
+
+function image_exact_resize($source, $destination, $final_w, $final_h) {
+  if (file_exists($source)) {
+    $source_info = image_get_info($source);
+    $source_ar = $source_info['width'] / $source_info['height'];
+    if ($source_info['width'] > $final_w && $source_info['height'] > $final_h) {
+    // only proceed if we've got a big enough source file... don't stretch a tiny one
+      $final_ar = $final_w / $final_h;
+      if($source_ar > $final_ar) { //Too wide!
+        $width = round($source_info['width'] / ($source_ar / $final_ar));
+        $x = round(($source_info['width'] - $width) / 2); // Start the crop at the halfway point to retain center
+        $y = 0;
+        $height = $source_info['height'];
+        image_crop($source,$destination,$x,$y,$width,$height);
+        // drupal_set_message("Crop: $x,$y,$width,$height",'message');
+      } elseif ($source_ar < $final_ar) { // Too tall!
+        $height = round($source_info['height'] * ($source_ar / $final_ar));
+        $y = round(($source_info['height'] - $height) / 2); //Start the crop at the halfway point to retain center
+        $x = 0;
+        $width = $source_info['width'];
+        image_crop($source,$destination,$x,$y,$width,$height);
+        // drupal_set_message("Crop: $x,$y,$width,$height",'message');
+      }
+    }
+    image_resize($destination, $destination, $final_w, $final_h);
+    // drupal_set_message("Resize: $final_w, $final_h",'message');
+    if(!file_exists($destination)) {
+      drupal_set_message("Image_exact: Image resize failed.","error");
+    }
+  } else {
+    drupal_set_message('image_exact: File does not exist.','error');
+  }
+}
+?>

@@ -1,0 +1,20 @@
+/* #container{background:#f0f0f0 url(../img/bodybg-blue.jpg) repeat-x;} 
+#mainmenu a:hover{background:#f0f0f0 url(../img/menuhover-blue.jpg) top left repeat-x;}
+#mainmenu a.current{background:#f0f0f0 url(../img/menuhover-blue.jpg) top left repeat-x;} */
+.links li:before {
+	content: url("../img/square-blue.gif");
+	padding-right: 3px;
+}
+.styledbox {
+  border: 1px solid #3489A5;
+	padding: .5em .5em .5em .5em;
+  margin-bottom: 1em;
+	background-color: #EAF4F7;
+}
+.comment .new {
+  text-align: right;
+  font-weight: bold;
+  font-size: 0.9em;
+  float: right;
+  color: #3489A5;
+}
