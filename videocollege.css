@@ -195,3 +195,7 @@ float:none;
 	color: #666666;
 	font-weight: bold;
 }
+
+
+.left{float:left;}
+.right{float:right:}
