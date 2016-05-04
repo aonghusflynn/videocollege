@@ -186,16 +186,15 @@ width:500px;
 }
 
 div#centercontent ul li {
-list-style-type:disc;
-display:block;
-float:none;
-}Quote_Title {
+	list-style-type:disc;
+}
+.Quote_Title {
 	font-size:12px;
 	margin-bottom:0px;
 	color: #666666;
 	font-weight: bold;
 }
 
-p{font-size:14px;}
+p, li{font-size:14px; line-height:150%;}
 .left{float:left;}
 .right{float:right;}
