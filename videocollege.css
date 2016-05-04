@@ -195,7 +195,7 @@ div#centercontent ul li {
 	font-weight: bold;
 }
 
-p, li{font-size:14px; line-height:150%;}
+html, div, p, li{font-size:14px; line-height:150%;}
 .left{float:left;}
 .right{float:right;}
 
