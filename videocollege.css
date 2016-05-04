@@ -198,3 +198,9 @@ div#centercontent ul li {
 p, li{font-size:14px; line-height:150%;}
 .left{float:left;}
 .right{float:right;}
+
+
+a{   
+	font-weight: bold;
+    color: #061BAD;
+	}
